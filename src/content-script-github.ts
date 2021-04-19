@@ -18,6 +18,7 @@ setInterval(async () => {
         // Filter for formationMode from options
         const formationTrickList: Trick[] = [];
         chrome.storage.sync.get({
+            favoriteColor: '',
             formationActivated: '',
             formationPreferences: [],
             formationDetails: '',
@@ -37,7 +38,6 @@ setInterval(async () => {
                 userPreferences(trick);
             }
 
-            // formationTrickList n'est pas bien lu par le systeme de match de tricks par rapport a trickList qui fonctionne bien
             formationTrickList.forEach((trick) => {
                 const match = new RegExp(trick.pattern, 'gi').exec(element.innerText);
                 if (match) {
